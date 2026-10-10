@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Hello CI/CD · __BUILD_TAG__</title>
+  <style>
+    :root {
+      --bg: #fafafa; --text: #212121; --muted: #616161;
+      --link: #1565c0; --border: #e0e0e0; --code-bg: #f0f0f0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #212121; --text: #dadada; --muted: #9e9e9e;
+        --link: #42a5f5; --border: #3a3a3a; --code-bg: #2b2b2b;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 62.5%; }
+    body {
+      margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+      font-size: 1.6rem; line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; justify-content: space-between; align-items: center;
+          max-width: 80rem; width: 100%; margin: 0 auto; padding: 2rem; }
+    nav .title { font-size: 2rem; font-weight: 500; color: var(--text); }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav ul a { color: var(--text); }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .about { text-align: center; max-width: 60rem; width: 100%; }
+    .avatar img { width: 12rem; height: 12rem; border-radius: 50%; object-fit: cover; }
+    .about h1 { font-size: 3.2rem; margin: 2rem 0 .5rem; font-weight: 600; }
+    .about h2 { font-size: 2rem; margin: 0 0 1rem; font-weight: 400; color: var(--muted); }
+    .tag { display: inline-block; font-family: SFMono-Regular, Consolas, Menlo, monospace;
+           font-size: 1.3rem; padding: .3rem 1rem; border: 1px solid var(--border);
+           border-radius: 2rem; color: var(--muted); }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 2rem;
+         text-align: left; margin: 3rem auto 0; font-size: 1.5rem; max-width: 44rem; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-family: SFMono-Regular, Consolas, Menlo, monospace; word-break: break-all; }
+    pre { text-align: left; background: var(--code-bg); border-radius: .6rem;
+          padding: 1.6rem; margin: 3rem 0 0; font-size: 1.4rem; overflow-x: auto;
+          font-family: SFMono-Regular, Consolas, Menlo, monospace; line-height: 1.5; }
+    footer { text-align: center; font-size: 1.4rem; color: var(--muted); padding: 2rem; }
+    @media (max-width: 480px) { nav { flex-direction: column; gap: 1rem; } dl { grid-template-columns: 1fr; } dt { margin-top: .8rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="title" href="__REPO_URL__">github_actions_demo</a>
+    <ul>
+      <li><a href="__REPO_URL__/actions">Actions</a></li>
+      <li><a href="__REPO_URL__/releases">Releases</a></li>
+      <li><a href="__RUN_URL__">Run #__RUN_NUMBER__</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="about">
+      <div class="avatar"><img src="https://github.com/__ACTOR__.png?size=240" alt="avatar de __ACTOR__"></div>
+      <h1>Hello, GitHub Actions!</h1>
+      <h2>Desplegado automáticamente con CI/CD</h2>
+      <span class="tag">__BUILD_TAG__</span>
+
+      <dl>
+        <dt>Commit</dt>         <dd><a href="__COMMIT_URL__">__COMMIT_SHORT__</a></dd>
+        <dt>Rama</dt>           <dd>__BRANCH__</dd>
+        <dt>Desplegado por</dt> <dd><a href="https://github.com/__ACTOR__">__ACTOR__</a></dd>
+        <dt>Fecha (UTC)</dt>    <dd>__DATE__</dd>
+      </dl>
+
+      <pre>$ python hello.py
+__APP_OUTPUT__</pre>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 UTEC · DevOps y GitHub Actions · Powered by <a href="https://docs.github.com/en/actions">GitHub Actions</a> &amp; <a href="https://pages.github.com/">Pages</a>
+  </footer>
+</body>
+</html>
